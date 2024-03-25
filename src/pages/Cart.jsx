@@ -1,26 +1,29 @@
 import { useEffect, useState } from "react";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import CartItem from "../components/CartItem";
 import { toast } from "react-hot-toast";
 import { clear } from "../redux/Slices/CartSlice";
 
-
 const Cart = () => {
-
-  const {cart} = useSelector((state) => state);
+  const { cart } = useSelector((state) => state);
   console.log("Printing Cart");
   console.log(cart);
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [totalAmount, setTotalAmount] = useState(0);
 
-  useEffect( () => {
-    setTotalAmount( cart.reduce( (acc, curr) => acc + curr.price,0) );
-  }, [cart])
-  const handleCheckout = () => {
-    toast.success("Your order successfully placed");
+  useEffect(() => {
+    setTotalAmount(cart.reduce((acc, curr) => acc + curr.price, 0));
+  }, [cart]);
+
+const handleCheckout = () => {
+    toast.success("Your order was successfully placed");
     dispatch(clear());
-  };
+    setTimeout(() => {
+        window.location.href = "/";
+    }, 600); 
+};
+
 
   return (
     <div className="grid grid-rows-1 sm:grid-rows-2 md:grid-rows-3 lg:grid-rows-4 max-w-6xl p-2 mx-auto space-y-10 space-x-5 min-h-[80vh]">
@@ -49,14 +52,11 @@ const Cart = () => {
             </div>
 
             <div>
-              <p
-                style={{
-                  marginBottom: "10px",
-                  color: "green",
-                  fontWeight: "bold",
-                }}
-              >
-                Total Amount: ${totalAmount.toFixed(2)}
+              <p className="mb-2">
+                <span style={{ fontWeight: "bold" }}>Total Amount: </span>
+                <span style={{ color: "green", fontWeight: "bold" }}>
+                  ${totalAmount.toFixed(2)}
+                </span>
               </p>
 
               <button
