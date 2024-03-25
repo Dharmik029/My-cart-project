@@ -32,7 +32,7 @@ const CartItem = ({ item, itemIndex }) => {
         </h1>
         <p className="item-description">{item.description}</p>
         <div className="item-price">
-          <p>{item.price}</p>
+          <p style={{ color: "green",fontWeight:"bold" }}>{item.price}</p>
         </div>
       </div>
     </div>
