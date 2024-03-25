@@ -47,7 +47,7 @@ const handleCheckout = () => {
                 Your Cart Summary
               </div>
               <p>
-                <span>Total Items: {cart.length}</span>
+                <span>Total Items :-> <span className="font-bold">{cart.length}</span></span>
               </p>
             </div>
 
