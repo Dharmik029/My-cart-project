@@ -76,7 +76,14 @@ const Cart = () => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex flex-col items-center justify-center h-screen -mt-20">
+          <img
+            style={{ width: "200px", height: "auto" }}
+            src="../cart-emty.png"
+            alt="Your Image Alt Text"
+            className="mb-4"
+          />
+
           <h1 className="text-3xl font-bold mb-4">Your Cart is Empty</h1>
           <Link
             to={"/"}
